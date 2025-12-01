@@ -1,0 +1,36 @@
+
+.navbar {
+    display: flex;
+    justify-content: center;
+    background-color: #b71c1c; /* Couleur légèrement plus foncée pour distinguer */
+    padding: 0.75rem 0;
+    margin-top: 20px;
+    margin: 0 auto;
+    
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 1.5rem;
+    padding: 0;
+    margin: 0;
+}
+
+.nav-links li {
+    display: inline;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    transition: color 0.3s ease;
+    padding: 0.5rem 1rem;
+}
+
+.nav-links a:hover {
+    color: #ffccbc;
+}
+
+/*  */
