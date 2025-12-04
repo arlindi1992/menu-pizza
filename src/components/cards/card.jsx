@@ -1,34 +1,10 @@
 import classes from "./card.module.css";
-import Modal from "../modal/modal.jsx";
-import { useState } from "react";
 
-function Card({pizzaData, onEvent}){
+function Card({pizzaData, onFetchProduct}){
 
-
-
-    // const ajoutePanier = () => {
-    //     return (
-    //         <div key={pizzaData.id}> 
-    //             {pizzaData.name} - {pizzaData.pr} 
-    //             <p>--------------</p>
-    //         </div>
-    //     )
-    // }
-
-    // const listPizzas = ajoutePanier.length > 0 ? ajoutePanier : <p>Votre panier est vide</p>;
-
-    const [isModalOpen, setIsModalOpen] = useState(false);
-
-
-    const showModal = () => {
-        setIsModalOpen(true);
+    const buttonClickHandler = () => {
+        onFetchProduct(pizzaData);
     }
-
-    const handleCancelModal = () => {
-        setIsModalOpen(false);
-    }
-
-
 
     return(
         <section className={classes["menu-container"]}>
@@ -38,12 +14,10 @@ function Card({pizzaData, onEvent}){
                 <p className={classes["description"]}>{pizzaData.ingredients}</p>
                 <p className={classes["price"]}> {pizzaData.price}</p>
                 <div className={classes["buttons"]}>
-                    <button onClick={showModal} >Comande</button>
+                    <button onClick={buttonClickHandler} className={classes["order"]}>Comande</button>
                     
                 </div>
             </div>
-            {isModalOpen && <Modal onCancel={handleCancelModal} pizzaData={pizzaData} />}
-            {/* {listPizzas} */}
         </section>
     )
 }

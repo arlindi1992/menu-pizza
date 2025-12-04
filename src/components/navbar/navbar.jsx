@@ -1,4 +1,5 @@
 import classes from './navbar.module.css';
+import { NavLink } from 'react-router-dom';
 
 function Navbar(){
     return(
@@ -9,10 +10,10 @@ function Navbar(){
             <nav className={classes.navbar}>
                 <ul className={classes["nav-links"]} >
                     <li>
-                        <a href="#">Menu</a>
+                        <NavLink to='/menu'>Menu</NavLink>
                     </li>
                     <li>
-                        <a href="#">Administration</a>
+                        <NavLink to="/admin">Admin</NavLink>
                     </li>
                 </ul>
             </nav>

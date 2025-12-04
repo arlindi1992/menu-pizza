@@ -1,27 +1,33 @@
 import classes from './cardselection.module.css';
 
-function Cardselection({pizzaData }) {
+function Cardselection({cart, removePizzaSelected}) {
 
-    const ajoutePanier = () => {
+    // Llogarisim totalin e përgjithshëm të shportës
+    const totalAmount = cart.reduce((sum, item) => {
+        return sum + (item.price * item.quantity);
+    }, 0).toFixed(2);
+
+    const list = cart.map((item) => {
         return (
-            <div key={pizzaData.id}> 
-                {pizzaData.name} - {pizzaData.pr} 
-                <p>--------------</p>
+            <div key={item.id} className={classes["cart-item"]}>
+                <span className={classes["cart-item-title"]}>{item.name} </span>
+                <span className={classes["cart-item-title"]}> x {item.quantity} </span>
+                <span>{(item.price * item.quantity).toFixed(2)} €</span>
+                <button className={classes["remove-item"]} onClick={() => removePizzaSelected(item.id)}>x</button>
             </div>
         )
-    }
+    })
 
-    const listPizzas = ajoutePanier.length > 0 ? ajoutePanier : <p>Votre panier est vide</p>;
-
-    console.log(pizzaData)
+    const listFinal = list.length > 0 ? list : "";
 
     return(
         <aside className={classes["cart-section"]}>
-            <h2>Votre Panier</h2>
-            <div className={classes["cart-items"]}></div>
-            <p className={classes["cart-total"]}>Total : 0.00 $</p>
-            <br/>
-            {listPizzas}
+            <div className={classes["cart-title"]}>
+                <h2  className={classes["cart-title"]}>Votre Panier</h2>
+                <div className={classes["cart-items"]}>{listFinal}</div>
+                <p className={classes["cart-total"]}>Total : {totalAmount} €</p>
+                
+            </div>
         </aside>
     )
 }
